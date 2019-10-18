@@ -1,0 +1,20 @@
+﻿body {
+}
+li:active {
+    background-color: #009688;
+}
+.content {
+    margin: 60px auto;
+}
+.center th , .panel-title , .panel-body{
+    text-align: center;
+}
+label {
+    margin:auto 10px;
+}
+.perStyle td {
+    width: 16%;
+}
+.page_navigation {
+    margin-left:200px;
+}

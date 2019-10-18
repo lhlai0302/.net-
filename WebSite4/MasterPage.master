@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="StyleSheet.css" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <nav class="navbar navbar-inverse navbar-inner navbar-fixed-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#target-menu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">学生管理系统-学生端</a>
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="selectCourse.aspx">学生选课</a>
+        </li>
+        <li>
+            <a href="showCourse.aspx">课程一览</a>
+        </li>
+        <li>
+            <a href="myCourse.aspx">个人课程</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="content">
+      <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+          
+      </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
