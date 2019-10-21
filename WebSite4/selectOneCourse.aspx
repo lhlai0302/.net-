@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="selectCourse.aspx.cs" Inherits="selectCourse" Debug="true"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="selectOneCourse.aspx.cs" Inherits="selectOneCourse" Debug="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -18,7 +18,7 @@
             </label>
         </div>
     </div>
-    <asp:GridView runat="server" ID="selectView" class="table table-bordered table-hover" AutoGenerateColumns="False" DataSourceID="sqlDataSource1" OnRowDataBound="selectView_RowDataBound">
+    <asp:GridView runat="server" ID="selectView" class="table table-bordered table-hover" AutoGenerateColumns="False">
         <Columns>
             <asp:BoundField DataField="课程名称" HeaderText="课程名称" SortExpression="课程名称" />
             <asp:BoundField DataField="教师姓名" HeaderText="教师姓名" SortExpression="教师姓名" />
@@ -30,11 +30,20 @@
             <asp:BoundField DataField="余量" HeaderText="余量" ReadOnly="True" SortExpression="余量" />
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:stuSysConnectionString %>" SelectCommand="SELECT [课程名称], [教师姓名], [上课时间], [上课地点], [学分], [容量], [已选], [余量] FROM [selectCourse]"></asp:SqlDataSource>
     <div class="panel panel-default">
         <div class="panel-heading">
              <h3 class="panel-title">已选列表</h3>
         </div>
     </div>
+    <asp:GridView runat="server" class="table table-hover table-bordered" AutoGenerateColumns="False" ID="course">
+        <Columns>
+            <asp:BoundField DataField="课程名称" HeaderText="课程名称" SortExpression="课程名称" />
+            <asp:BoundField DataField="教师姓名" HeaderText="教师姓名" SortExpression="教师姓名" />
+            <asp:BoundField DataField="上课时间" HeaderText="上课时间" SortExpression="上课时间" />
+            <asp:BoundField DataField="上课地点" HeaderText="上课地点" SortExpression="上课地点" />
+            <asp:BoundField DataField="学分" HeaderText="学分" SortExpression="学分" />
+        </Columns>
+
+    </asp:GridView>
 </asp:Content>
 
