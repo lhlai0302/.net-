@@ -5,25 +5,51 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Data.SqlClient;
 
 public partial class second : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        string strCon = "Data Source=DESKTOP-TIOVFOR;Initial Catalog=stuSys;Integrated Security=True";
+        SqlConnection MyConnection = new SqlConnection(strCon);
+        MyConnection.Open();
+        if (!IsPostBack)
+        {
 
+            string selected = "select * from Courses";
+            SqlCommand sc = new SqlCommand(selected, MyConnection);
+            SqlDataAdapter sda = new SqlDataAdapter(sc);
+            //实例化数据集DataSet
+            DataSet da = new DataSet();
+            //将返回的数据存放到DataSet中名为LoanMaterial的DataTable中
+            sda.Fill(da);
+            //设置数据源，用于填充控件中的项的值列表
+            courseView.DataSource = da;
+            courseView.DataBind();
+        }
     }
     protected void Course_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         courseView.PageIndex = e.NewPageIndex;
+        InitPage();
+    }
+    protected void InitPage()
+    {
+        string strCon = "Data Source=DESKTOP-TIOVFOR;Initial Catalog=stuSys;Integrated Security=True";
+        SqlConnection MyConnection = new SqlConnection(strCon);
+        MyConnection.Open();
+        string selected = "select * from Courses";
+        SqlCommand sc = new SqlCommand(selected, MyConnection);
+        SqlDataAdapter sda = new SqlDataAdapter(sc);
+        //实例化数据集DataSet
+        DataSet da = new DataSet();
+        //将返回的数据存放到DataSet中名为LoanMaterial的DataTable中
+        sda.Fill(da);
+        //设置数据源，用于填充控件中的项的值列表
+        courseView.DataSource = da;
         courseView.DataBind();
     }
-    //protected void Button1_Click(object sender, EventArgs e)
-    //{
-    //    DataSet dateset = new DataSet();
-    //    //dateset 从数据库中获取数据
-    //    this.courseView.DataSource = dateset;
-    //    this.courseView.DataBind(); 
-    //}
 
     protected void school_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -181,5 +207,91 @@ public partial class second : System.Web.UI.Page
                 break;
         }
 
+    }
+    protected void click(object sender, EventArgs e)
+    {
+        string strCon = "Data Source=DESKTOP-TIOVFOR;Initial Catalog=stuSys;Integrated Security=True";
+        SqlConnection MyConnection = new SqlConnection(strCon);
+        MyConnection.Open();
+        if (myClass.SelectedIndex != -1&&myClass.SelectedIndex!=0)
+        {
+            //string strCon = "Data Source=DESKTOP-TIOVFOR;Initial Catalog=stuSys;Integrated Security=True";
+            //SqlConnection MyConnection = new SqlConnection(strCon);
+            //MyConnection.Open();
+            String selectedClass = "select * from Courses where 班级名称 like '%" + myClass.SelectedValue + "%'";
+            SqlCommand sc = new SqlCommand(selectedClass, MyConnection);
+            SqlDataAdapter sda = new SqlDataAdapter(sc);
+            //实例化数据集DataSet
+            DataSet da = new DataSet();
+            //将返回的数据存放到DataSet中名为LoanMaterial的DataTable中
+            sda.Fill(da);
+            //设置数据源，用于填充控件中的项的值列表
+            courseView.DataSource = da;
+            //将控件及其所有子控件绑定到指定的数据源
+            courseView.DataBind();
+
+        }
+        if (major.SelectedIndex != -1&&major.SelectedIndex!=0)
+        {
+            //string strCon = "Data Source=DESKTOP-TIOVFOR;Initial Catalog=stuSys;Integrated Security=True";
+            //SqlConnection MyConnection = new SqlConnection(strCon);
+            //MyConnection.Open();
+            String selectedMajor = "select * from Courses where 专业名称='" + major.SelectedValue + "'";
+            SqlCommand sc = new SqlCommand(selectedMajor, MyConnection);
+            SqlDataAdapter sda = new SqlDataAdapter(sc);
+            //实例化数据集DataSet
+            DataSet da = new DataSet();
+            //将返回的数据存放到DataSet中名为LoanMaterial的DataTable中
+            sda.Fill(da);
+            //设置数据源，用于填充控件中的项的值列表
+            courseView.DataSource = da;
+            //将控件及其所有子控件绑定到指定的数据源
+            courseView.DataBind();
+        }
+        if (course.SelectedIndex != -1&&course.SelectedIndex!=0)
+        {
+            //string strCon = "Data Source=DESKTOP-TIOVFOR;Initial Catalog=stuSys;Integrated Security=True";
+            //SqlConnection MyConnection = new SqlConnection(strCon);
+            //MyConnection.Open();
+            String selectedCourse = "select * from Courses where 课程名称='" + course.SelectedValue + "'";
+            SqlCommand sc = new SqlCommand(selectedCourse, MyConnection);
+            SqlDataAdapter sda = new SqlDataAdapter(sc);
+            //实例化数据集DataSet
+            DataSet da = new DataSet();
+            //将返回的数据存放到DataSet中名为LoanMaterial的DataTable中
+            sda.Fill(da);
+            //设置数据源，用于填充控件中的项的值列表
+            courseView.DataSource = da;
+            //将控件及其所有子控件绑定到指定的数据源
+            courseView.DataBind();
+        }
+        if (major.SelectedIndex != -1 && major.SelectedIndex != 0 && myClass.SelectedIndex != -1 && myClass.SelectedIndex != 0)
+        {
+            String selected = "select * from Courses where 专业名称='" + major.SelectedValue + "'"+" and 班级名称 like '%" + myClass.SelectedValue + "%'";
+            SqlCommand sc = new SqlCommand(selected, MyConnection);
+            SqlDataAdapter sda = new SqlDataAdapter(sc);
+            //实例化数据集DataSet
+            DataSet da = new DataSet();
+            //将返回的数据存放到DataSet中名为LoanMaterial的DataTable中
+            sda.Fill(da);
+            //设置数据源，用于填充控件中的项的值列表
+            courseView.DataSource = da;
+            //将控件及其所有子控件绑定到指定的数据源
+            courseView.DataBind();
+        }
+        if (major.SelectedIndex != -1 && major.SelectedIndex != 0 && myClass.SelectedIndex != -1 && myClass.SelectedIndex != 0 && course.SelectedIndex != -1 && course.SelectedIndex != 0)
+        {
+            String selected = "select * from Courses where 专业名称='" + major.SelectedValue + "'" + " and 班级名称 like '%" + myClass.SelectedValue + "%'"+" and 课程名称='"+course.SelectedValue+"'";
+            SqlCommand sc = new SqlCommand(selected, MyConnection);
+            SqlDataAdapter sda = new SqlDataAdapter(sc);
+            //实例化数据集DataSet
+            DataSet da = new DataSet();
+            //将返回的数据存放到DataSet中名为LoanMaterial的DataTable中
+            sda.Fill(da);
+            //设置数据源，用于填充控件中的项的值列表
+            courseView.DataSource = da;
+            //将控件及其所有子控件绑定到指定的数据源
+            courseView.DataBind();
+        }
     }
 }

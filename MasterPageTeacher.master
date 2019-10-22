@@ -26,6 +26,9 @@
         <li>
             <a href="teacher.aspx">课程查看</a>
         </li>
+          <li>
+            <a href="showCourse.aspx">课程一览</a>
+        </li>
       </ul>
     </nav>
     <div class="content">

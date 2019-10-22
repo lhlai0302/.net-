@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 
-public partial class selectCourse : System.Web.UI.Page
+public partial class selectCourse : System.Web.UI.Page   
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -39,9 +39,9 @@ public partial class selectCourse : System.Web.UI.Page
 
             for (int i = 0; i < e.Row.Cells.Count; i++)
             {
-                //e.Row.Cells[i].Attributes.Add("onclick", "alert('行：" + (e.Row.RowIndex+58) + " 列：" + i + "')");
-                e.Row.Cells[i].Attributes.Add("onclick", "alert('现在不是选课时间！')");
-                //e.Row.Cells[i].Attributes.Add("onclick", "window.location.href='http://www.baidu.com'");
+                //e.Row.Cells[i].Attributes.Add("onclick", "alert('行：" +  + " 列：" + i + "')");
+                //e.Row.Cells[i].Attributes.Add("onclick", "alert('现在不是选课时间！')");
+                e.Row.Cells[i].Attributes.Add("onclick", "window.location.href='selectOneCourse.aspx?num="+(e.Row.RowIndex+58)+"'");
             }
             //int index = int.Parse(text.Text);
                 //    SqlConnection sqlcon = new SqlConnection(ConfigurationManager.
@@ -65,4 +65,5 @@ public partial class selectCourse : System.Web.UI.Page
                 //sqlcon.Close();
             }
         }
-    }
+    
+}
