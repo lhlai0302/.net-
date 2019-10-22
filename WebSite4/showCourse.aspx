@@ -101,9 +101,10 @@
                     <asp:ListItem></asp:ListItem>
                 </asp:DropDownList>
             </label>
+            <asp:Button runat="server" OnClick="click" Text="查询" class="btn btn-primary" />
         </div>
     </div>
-    <asp:GridView runat="server" ID="courseView" AutoGenerateColumns="False" DataKeyNames="课程编号" DataSourceID="SqlDataSource2" class="table table-bordered table-hover" AllowPaging="true" PageSize="15" OnPageIndexChanging="Course_PageIndexChanging">
+    <asp:GridView runat="server" ID="courseView" AutoGenerateColumns="False" DataKeyNames="课程编号" class="table table-bordered table-hover" AllowPaging="true" PageSize="15" OnPageIndexChanging="Course_PageIndexChanging">
         <Columns>
             <asp:BoundField DataField="课程编号" HeaderText="课程编号" InsertVisible="False" ReadOnly="True" SortExpression="课程编号" />
             <asp:BoundField DataField="课程名称" HeaderText="课程名称" SortExpression="课程名称" />
@@ -116,6 +117,5 @@
             <asp:BoundField DataField="学期" HeaderText="学期" SortExpression="学期" />
         </Columns>
     </asp:GridView>
-<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:stuSysConnectionString4 %>" SelectCommand="SELECT * FROM [Courses]"></asp:SqlDataSource>
 </asp:Content>
 
