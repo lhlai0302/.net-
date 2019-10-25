@@ -11,12 +11,15 @@ using Utility;
 public partial class GradeEntry : System.Web.UI.Page
 {
     SqlHelper helper = new Utility.SqlHelper();
-    public static string connection = "Data Source=DESKTOP-SS8O6R6\\SQLEXPRESS;Initial Catalog=StudentSystem; User id = sa; Password = 917125317";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack) return;
         //TODO: 从session获取
-        int teacherID = 2;
+        string teacherID = null;
+        if (Session["userId"] != null && Convert.ToString(Session["userId"]) != "")
+        {
+            teacherID = Convert.ToString(Session["userId"]);
+        }
 
         string sqlQuery = "SELECT * FROM Course where TeacherID = @teacherID";
         DataTable dt = helper.ExecuteDataTable(sqlQuery, CommandType.Text, new SqlParameter[] { new SqlParameter("@teacherID", teacherID) });
@@ -55,10 +58,10 @@ public partial class GradeEntry : System.Web.UI.Page
     }
     protected void Update(object sender, GridViewUpdateEventArgs e)
     {
-        string studentIDStr = CourseStudent.Rows[e.RowIndex].Cells[0].Text;
+        string studentID = CourseStudent.Rows[e.RowIndex].Cells[0].Text;
         string scoreStr = ((TextBox)CourseStudent.Rows[e.RowIndex].FindControl("ScoreTextBox")).Text;
         
-        int studentID = int.Parse(studentIDStr);
+        
         int score = int.Parse(scoreStr);
         string updateSql = "Update StudentCourse Set Score = @score Where StudentID = @studentID and CourseID = @courseID";
         helper.ExecuteNonQuery(updateSql, CommandType.Text, new SqlParameter[] { new SqlParameter("@score", score),

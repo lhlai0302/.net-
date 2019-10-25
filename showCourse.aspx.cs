@@ -9,6 +9,19 @@ using System.Data.SqlClient;
 
 public partial class second : System.Web.UI.Page
 {
+    protected override void OnPreInit(EventArgs e)
+    {
+        String userId = null;
+        if (Session["userId"] != null && Convert.ToString(Session["userId"]) != "")
+        {
+            userId = Convert.ToString(Session["userId"]);
+            if (userId.Length == 8)
+            {
+                Page.MasterPageFile = "MasterPageTeacher.master";
+            }
+        }
+        base.OnPreInit(e);
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
         string strCon = "Data Source=DESKTOP-TIOVFOR;Initial Catalog=stuSys;Integrated Security=True";

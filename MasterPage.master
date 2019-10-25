@@ -32,6 +32,9 @@
         <li>
             <a href="myCourse.aspx">个人课程</a>
         </li>
+        <li>
+            <a href="GradeSearch.aspx">成绩查询</a>
+        </li>
       </ul>
     </nav>
     <div class="content">

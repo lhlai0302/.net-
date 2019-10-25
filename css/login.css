@@ -1,0 +1,107 @@
+﻿@charset "utf-8";
+body {
+    font: 12px/1.5 'MicroSoft YaHei', 'SimSun';
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, code, em, img, q, small, strong, dd, dl, dt, li, ol, ul, fieldset, form, label, table, tbody, tr, th, td, input pre {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    list-style: none;
+}
+
+i {
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+.login_content {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.login_detailed {
+    width: 404px;
+    height: 438px;
+    margin: 50px auto 0;
+}
+
+.login_tab {
+    height: 55px;
+    width: 403px;
+    line-height: 55px;
+    text-align: center;
+    letter-spacing: 10px;
+    overflow: hidden;
+    font-size: 20px;
+    color: black;
+}
+
+.login_tab_left, .login_tab_right {
+    width: 403px;
+    background: #FFF;
+}
+
+.login_user {
+    height: 362px;
+}
+
+.fl {
+    float: left;
+    display: inline;
+}
+
+.login_user_content {
+    width: 330px;
+    margin-left: 36px;
+    padding-top: 45px;
+}
+
+    .login_user_content ul li {
+        margin-bottom: 6px;
+    }
+
+    .login_user_content span {
+        color: #ff6c00;
+    }
+
+.login_text {
+    width: 301px;
+    height: 44px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: black;
+    padding-left: 6px;
+    line-height: 44px;
+    font-family: "微软雅黑";
+}
+
+.button_blue {
+    background: #35dad4;
+    width: 301px;
+    height: 44px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    line-height: 42px;
+    font-family: "微软雅黑";
+}
+
+.forget_psw {
+    margin-top: 15px;
+}
+
+.login_user_content a {
+    color: #666;
+}

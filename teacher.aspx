@@ -20,7 +20,11 @@
         <RowStyle HorizontalAlign="Center" ></RowStyle>
     </asp:GridView>
     
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:stuSysConnectionString %>" SelectCommand="SELECT [courseName], [classroom], [time], [class], [count] FROM [teacherCourse]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:stuSysConnectionString %>" SelectCommand="SELECT [courseName], [classroom], [time], [class], [count] FROM [teacherCourse] WHERE ([teacherId] = @teacherId)">
+        <SelectParameters>
+            <asp:SessionParameter Name="teacherId" SessionField="userId" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     
 </asp:Content>
 

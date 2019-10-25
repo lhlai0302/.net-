@@ -40,9 +40,9 @@
         <RowStyle HorizontalAlign="Center" CssClass="perStyle"></RowStyle>
     </asp:GridView>
     
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:stuSysConnectionString %>" SelectCommand="SELECT [week], [firstClass], [secondClass], [thirdClass], [fourthClass], [fifthClass] FROM [personalCourse] WHERE ([year] = @year) AND ([term] = @term))">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:stuSysConnectionString %>" SelectCommand="SELECT [week], [firstClass], [secondClass], [thirdClass], [fourthClass], [fifthClass] FROM [personalCourse] WHERE (([studentId] = @studentId) AND ([year] = @year) AND ([term] = @term))">
         <SelectParameters>
-            <%--<asp:Parameter DefaultValue="" Name="studentId" Type="String" />--%>
+            <asp:SessionParameter Name="studentId" SessionField="userId" Type="String" />
             <asp:ControlParameter ControlID="year" DefaultValue="2019-2020" Name="year" PropertyName="SelectedValue" Type="String" />
             <asp:ControlParameter ControlID="term" DefaultValue="1" Name="term" PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>

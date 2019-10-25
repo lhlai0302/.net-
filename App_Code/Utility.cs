@@ -10,7 +10,7 @@ namespace Utility
     /// </summary>
     public class SqlHelper
     {
-        private string connectionString = "Data Source=DESKTOP-SS8O6R6\\SQLEXPRESS;Initial Catalog=StudentSystem; User id = sa; Password = 917125317";
+        private string connectionString = "Data Source=DESKTOP-TIOVFOR;Initial Catalog=stuSys;Integrated Security=True";
 
         /// <summary>
         /// 设定数据库访问字符串
